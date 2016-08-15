@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bad-Ass BMI Calculator</title>
+    <script src="src/person.js"></script>
+    <script src="src/bmi_calculator.js"></script>
+    <script src= 'https://code.jquery.com/jquery-2.1.4.js'></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var system = "metric"
+        $('#imperial_inputs').hide();
+        $('#imperial').click(function () {
+          system = "imperial"
+          $('#imperial_inputs').toggle();
+          $('#metric_inputs').toggle();
+        });
+        $('#calculate').click(function () {
+          var w = parseFloat($('#weight').val());
+          var wi = parseFloat($('#weight_imperial').val());
+          var h = parseFloat($('#height').val());
+          var hi = parseFloat($('#height_inches').val());
+          var hf = parseFloat($('#height_feet').val());
+          var person = new Person({weight: w, weight_imperial: wi, height: h, height_feet: hf, height_inches: hi, system: system});
+          person.calculate_bmi();
+          $('#display_value').html('Your BMI is ' + person.bmiValue);
+          $('#display_message').html('and you are '+ person.bmiMessage);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <span id="metric_inputs">
+      <form>
+        <input type="text" id="weight" placeholder="Weight">
+        <input type="text" id="height" placeholder="Height">
+      </form>
+    </span>
+    <span id = "imperial_inputs">
+      <form>
+        <input type="text" id="weight_imperial" placeholder="Weight">
+        <input type="text" id="height_feet" placeholder="Feet">
+        <input type="text" id="height_inches" placeholder="Inches">
+      </form>
+    </span>
+    <span>
+      <form>
+        <input type="button" id="calculate" value="Calculate">
+      </form>
+    </span>
+    <span>
+      <form>
+        <input type="button" id="imperial" value="Toggle Imperial / Metric">
+      </form>
+    </span>
+    <div>
+      <span id="display_value"></span>
+      <span id="display_message"></span>
+
+    </div>
+  </body>
+</html>
