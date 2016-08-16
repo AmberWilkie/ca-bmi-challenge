@@ -7,11 +7,19 @@ h1 {
 p {
     color: red;
 }
-input[type=text] {
+input[type=text], [type=number] {
   width: 60%;
   padding: 10px 10px;
   margin: 6px 0;
   box-sizing: border-box;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 input[type=text]:focus {
     border: 1px solid #000000;

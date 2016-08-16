@@ -16,34 +16,38 @@
           if ($('#toggle_system input[type="radio"]:checked').val() == "metric") {
             $('#metric_inputs').show();
             $('#imperial_inputs').hide();
-            $('#toggle_system input[type="text"], #weight_imperial').val("");
-            $('#toggle_system input[type="text"], #height_inches').val("");
-            $('#toggle_system input[type="text"], #height_feet').val("");
+            $('#toggle_system input[type="number"], #weight_imperial').val("");
+            $('#toggle_system input[type="number"], #height_inches').val("");
+            $('#toggle_system input[type="number"], #height_feet').val("");
             $('#display_value').html('');
             $('#display_message').html('');
             system = "metric";
           } else {
             $('#metric_inputs').hide();
             $('#imperial_inputs').show();
-            $('#toggle_system input[type="text"], #weight').val("");
-            $('#toggle_system input[type="text"], #height').val("");
+            $('#toggle_system input[type="number"], #weight').val("");
+            $('#toggle_system input[type="number"], #height').val("");
             $('#display_value').html('');
             $('#display_message').html('');
             system = "imperial";
           };
         });
         $('#calculate').click(function () {
-          // if ($('#weight').val() == "" && $('#weight_imperial').val() == "" ) {
-          //   alert("Please enter a number in the weight field.")
-          // }
-          //This only works if I have entered *nothing.* Does not handle text in this field.
-
-
-
+          if ($('#weight').val() == "" && $('#weight_imperial').val() == "" ) {
+            alert("Please enter a number in the weight field.")
+          };
+          if ($('#height').val() == "" && ($('#height_feet').val() == "" )) {
+            alert("Please enter a number in the height field(s).")
+          };
+          if ($('#height_inches').val() == "") {
+            var hi = 0
+          } else {
+            var hi = parseFloat($('#height_inches').val());
+          };
           var w = parseFloat($('#weight').val());
           var wi = parseFloat($('#weight_imperial').val());
           var h = parseFloat($('#height').val());
-          var hi = parseFloat($('#height_inches').val());
+
           var hf = parseFloat($('#height_feet').val());
 
 
@@ -69,19 +73,19 @@
       <span id="metric_inputs">
         <form>
           Weight<br>
-          <input type="text" id="weight" placeholder="Weight"><br>
+          <input type="number" id="weight" placeholder="Weight"><br>
           Height<br>
-          <input type="text" id="height" placeholder="Height">
+          <input type="number" id="height" placeholder="Height">
         </form>
       </span>
       <span id = "imperial_inputs">
         <form>
           Weight<br>
-          <input type="text" id="weight_imperial" placeholder="Weight"><br>
+          <input type="number" id="weight_imperial" placeholder="Weight"><br>
           Height in Feet<br>
-          <input type="text" id="height_feet" placeholder="Feet"><br>
+          <input type="number" id="height_feet" placeholder="Feet"><br>
           Height in Inches<br>
-          <input type="text" id="height_inches" placeholder="Inches">
+          <input type="number" id="height_inches" placeholder="Inches">
         </form>
       </span>
       <span>
