@@ -13,6 +13,6 @@ describe('BMI_UI - index.html', function() {
     });
 
     it("displays BMI Message", function() {
-        expect($('#display_message').text()).toBe('and you are need a few more hamburgers...');
+        expect($('#display_message').text()).toBe('and you are in need of a few more hamburgers...');
     });
 });

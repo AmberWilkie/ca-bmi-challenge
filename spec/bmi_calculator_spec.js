@@ -15,7 +15,7 @@ describe("BMICalculator", function() {
 
 describe("BMICalculator", function(){
   beforeEach(function() {
-    person = new Person({weight: 160, height_feet: 5, height_inches: 6});
+    person = new Person({weight_imperial: 160, height_feet: 5, height_inches: 6});
     calculator = new BMICalculator();
   });
 

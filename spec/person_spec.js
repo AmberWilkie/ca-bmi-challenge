@@ -21,7 +21,7 @@ describe("Person", function() {
 
   it("should have a BMI Message", function() {
     person.calculate_bmi();
-    expect(person.bmiMessage).toEqual("need a few more hamburgers...")
+    expect(person.bmiMessage).toEqual("in need of a few more hamburgers...")
   });
 });
 
@@ -29,12 +29,12 @@ describe("Imperial Person", function() {
   var person;
 
   beforeEach(function() {
-    person = new Person({weight: 160, height_feet: 5, height_inches: 6, system: "imperial"});
+    person = new Person({weight_imperial: 160, height_feet: 5, height_inches: 6, system: "imperial"});
   });
 
   it("should have a BMI message", function() {
     person.calculate_bmi();
-    expect(person.bmiMessage).toEqual("need a few more hamburgers...")
+    expect(person.bmiMessage).toEqual("in need of a few more hamburgers...")
   });
 
 });

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Bad-Ass BMI Calculator</title>
+    <link rel="stylesheet" href="./css/styles.css">
     <script src="src/person.js"></script>
     <script src="src/bmi_calculator.js"></script>
     <script src= 'https://code.jquery.com/jquery-2.1.4.js'></script>
     <script type="text/javascript">
       system = "metric";
       $(document).ready(function () {
-
         $('#imperial_inputs').hide();
 
         $('#toggle_system input[type="radio"]').change(function () {
@@ -23,26 +23,6 @@
             system = "imperial";
           };
         });
-
-        // if ($('#toggle_system input[type="radio"]:checked').val() == "metric") {
-        //   debugger;
-        //   $('#metric_inputs').show();
-        //   $('#imperial_inputs').hide();
-        //   system = "metric";
-        // } else {
-        // //  ($('input[name="system"]:checked', '#system_selector').val() == "imperial")
-        //   $('#metric_inputs').hide();
-        //   $('#imperial_inputs').show();
-        //   var system = "imperial";
-        // };
-
-        // var system = "metric"
-        // $('#imperial_inputs').hide();
-        // $('#imperial').click(function () {
-        //   // system = "imperial"
-        //   // $('#imperial_inputs').toggle();
-        //   // $('#metric_inputs').toggle();
-        // });
         $('#calculate').click(function () {
           var w = parseFloat($('#weight').val());
           var wi = parseFloat($('#weight_imperial').val());
@@ -58,37 +38,44 @@
     </script>
   </head>
   <body>
-    <span id="metric_inputs">
-      <form>
-        <input type="text" id="weight" placeholder="Weight">
-        <input type="text" id="height" placeholder="Height">
-      </form>
-    </span>
-    <span id = "imperial_inputs">
-      <form>
-        <input type="text" id="weight_imperial" placeholder="Weight">
-        <input type="text" id="height_feet" placeholder="Feet">
-        <input type="text" id="height_inches" placeholder="Inches">
-      </form>
-    </span>
-    <span>
-      <form>
-        <input type="button" id="calculate" value="Calculate">
-      </form>
-    </span>
-    <span>
-      <!-- <form>
-        <input type="button" id="imperial" value="Toggle Imperial / Metric">
-      </form> -->
-      <form action="" id="toggle_system" >
-        <input type="radio" name="system" value="metric" checked id="metric_radio">Metric<br>
-        <input type="radio" name="system" value="imperial" id="imperial_radio">Imperial<br>
-      </form>
-    </span>
-    <div>
-      <span id="display_value"></span>
-      <span id="display_message"></span>
+    <div id = 'box'>
+      Calculate the shit out of your BMI with this bitch:
+      <span id = "toggler">
+        <form action="" id="toggle_system" >
+          <input type="radio" name="system" value="metric" checked id="metric_radio"> Metric&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="radio" name="system" value="imperial" id="imperial_radio"> Imperial<br>
+        </form>
+      </span>
 
+      <span id="metric_inputs">
+        <form>
+          Weight<br>
+          <input type="text" id="weight" placeholder="Weight"><br>
+          Height<br>
+          <input type="text" id="height" placeholder="Height">
+        </form>
+      </span>
+      <span id = "imperial_inputs">
+        <form>
+          Weight<br>
+          <input type="text" id="weight_imperial" placeholder="Weight"><br>
+          Height in Feet<br>
+          <input type="text" id="height_feet" placeholder="Feet"><br>
+          Height in Inches<br>
+          <input type="text" id="height_inches" placeholder="Inches">
+        </form>
+      </span>
+      <span>
+        <form>
+          <input type="button" id="calculate" value="Calculate">
+        </form>
+      </span>
+
+      <div>
+        <span id="display_value"></span>
+        <span id="display_message"></span>
+
+      </div>
     </div>
   </body>
 </html>

@@ -31,7 +31,7 @@ function setBMIMessage (obj, value){
     obj.bmiMessage = "Still Too Skinny"
   }
   if (obj.bmiValue > 25 && obj.bmiValue < 30) {
-    obj.bmiMessage = "need a few more hamburgers..."
+    obj.bmiMessage = "in need of a few more hamburgers..."
   }
   if (obj.bmiValue > 30) {
     obj.bmiMessage = "American"
