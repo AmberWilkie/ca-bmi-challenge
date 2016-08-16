@@ -16,3 +16,13 @@ describe('BMI_UI - index.html', function() {
         expect($('#display_message').text()).toBe('and you are in need of a few more hamburgers...');
     });
 });
+
+describe('BMI_UI - Errors - index.html', function() {
+    beforeEach(function() {
+        jasmine.getFixtures().fixturesPath = '.';
+        loadFixtures('index.html');
+        $.holdReady(false);
+        $('#weight').val('lingonberry');
+        $('#height').val('186');
+        $('#calculate').trigger('click');
+    });

@@ -16,19 +16,38 @@
           if ($('#toggle_system input[type="radio"]:checked').val() == "metric") {
             $('#metric_inputs').show();
             $('#imperial_inputs').hide();
+            $('#toggle_system input[type="text"], #weight_imperial').val("");
+            $('#toggle_system input[type="text"], #height_inches').val("");
+            $('#toggle_system input[type="text"], #height_feet').val("");
+            $('#display_value').html('');
+            $('#display_message').html('');
             system = "metric";
           } else {
             $('#metric_inputs').hide();
             $('#imperial_inputs').show();
+            $('#toggle_system input[type="text"], #weight').val("");
+            $('#toggle_system input[type="text"], #height').val("");
+            $('#display_value').html('');
+            $('#display_message').html('');
             system = "imperial";
           };
         });
         $('#calculate').click(function () {
+          // if ($('#weight').val() == "" && $('#weight_imperial').val() == "" ) {
+          //   alert("Please enter a number in the weight field.")
+          // }
+          //This only works if I have entered *nothing.* Does not handle text in this field.
+
+
+
           var w = parseFloat($('#weight').val());
           var wi = parseFloat($('#weight_imperial').val());
           var h = parseFloat($('#height').val());
           var hi = parseFloat($('#height_inches').val());
           var hf = parseFloat($('#height_feet').val());
+
+
+
           var person = new Person({weight: w, weight_imperial: wi, height: h, height_feet: hf, height_inches: hi, system: system});
           person.calculate_bmi();
           $('#display_value').html('Your BMI is ' + person.bmiValue);
