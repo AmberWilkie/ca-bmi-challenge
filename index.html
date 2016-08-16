@@ -57,6 +57,17 @@
           $('#display_value').html('Your BMI is ' + person.bmiValue);
           $('#display_message').html('and you are '+ person.bmiMessage);
         });
+
+        $('#metric_form').keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            $('#calculate').click();//Trigger search button click event
+        }});
+
+        $('#imperial_form').keypress(function(e){
+        if(e.which == 13){
+            $('#calculate').click();
+          }
+        });
       });
     </script>
   </head>
@@ -71,7 +82,7 @@
       </span>
 
       <span id="metric_inputs">
-        <form>
+        <form id="metric_form">
           Weight<br>
           <input type="number" id="weight" placeholder="Weight"><br>
           Height<br>
@@ -79,7 +90,7 @@
         </form>
       </span>
       <span id = "imperial_inputs">
-        <form>
+        <form id = "imperial_form">
           Weight<br>
           <input type="number" id="weight_imperial" placeholder="Weight"><br>
           Height in Feet<br>
