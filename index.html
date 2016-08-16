@@ -8,13 +8,40 @@
     <script src= 'https://code.jquery.com/jquery-2.1.4.js'></script>
     <script type="text/javascript">
       $(document).ready(function () {
-        var system = "metric"
+        var system = "metric";
         $('#imperial_inputs').hide();
-        $('#imperial').click(function () {
-          system = "imperial"
-          $('#imperial_inputs').toggle();
-          $('#metric_inputs').toggle();
+
+        $('#toggle_system input[type="radio"]').change(function () {
+          if ($('#toggle_system input[type="radio"]:checked').val() == "metric") {
+            $('#metric_inputs').show();
+            $('#imperial_inputs').hide();
+            system = "metric";
+          } else {
+            $('#metric_inputs').hide();
+            $('#imperial_inputs').show();
+            system = "imperial";
+          };
         });
+
+        // if ($('#toggle_system input[type="radio"]:checked').val() == "metric") {
+        //   debugger;
+        //   $('#metric_inputs').show();
+        //   $('#imperial_inputs').hide();
+        //   system = "metric";
+        // } else {
+        // //  ($('input[name="system"]:checked', '#system_selector').val() == "imperial")
+        //   $('#metric_inputs').hide();
+        //   $('#imperial_inputs').show();
+        //   var system = "imperial";
+        // };
+
+        // var system = "metric"
+        // $('#imperial_inputs').hide();
+        // $('#imperial').click(function () {
+        //   // system = "imperial"
+        //   // $('#imperial_inputs').toggle();
+        //   // $('#metric_inputs').toggle();
+        // });
         $('#calculate').click(function () {
           var w = parseFloat($('#weight').val());
           var wi = parseFloat($('#weight_imperial').val());
@@ -49,8 +76,12 @@
       </form>
     </span>
     <span>
-      <form>
+      <!-- <form>
         <input type="button" id="imperial" value="Toggle Imperial / Metric">
+      </form> -->
+      <form action="" id="toggle_system" >
+        <input type="radio" name="system" value="metric" checked id="metric_radio">Metric<br>
+        <input type="radio" name="system" value="imperial" id="imperial_radio">Imperial<br>
       </form>
     </span>
     <div>

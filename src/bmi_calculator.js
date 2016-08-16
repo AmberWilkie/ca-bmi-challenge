@@ -12,6 +12,7 @@ BMICalculator.prototype.metric_bmi = function(obj) {
 };
 
 BMICalculator.prototype.imperial_bmi = function(obj) {
+  debugger;
   var weight = obj.weight_imperial;
   var height_feet = obj.height_feet*12;
   var height_inches = obj.height_inches;
