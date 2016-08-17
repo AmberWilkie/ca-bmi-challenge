@@ -27,13 +27,13 @@ function setBMIMessage (obj, value){
   if (obj.bmiValue < 18.5) {
     obj.bmiMessage = "Too Skinny"
   }
-  if (obj.bmiValue > 18.5 && obj.bmiValue < 25) {
+  if (obj.bmiValue >= 18.5 && obj.bmiValue < 25) {
     obj.bmiMessage = "Still Too Skinny"
   }
-  if (obj.bmiValue > 25 && obj.bmiValue < 30) {
+  if (obj.bmiValue >= 25 && obj.bmiValue < 30) {
     obj.bmiMessage = "in need of a few more hamburgers..."
   }
-  if (obj.bmiValue > 30) {
+  if (obj.bmiValue >= 30) {
     obj.bmiMessage = "American"
   }
 };

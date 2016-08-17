@@ -7,69 +7,8 @@
     <script src="src/person.js"></script>
     <script src="src/bmi_calculator.js"></script>
     <script src= 'https://code.jquery.com/jquery-2.1.4.js'></script>
-    <script type="text/javascript">
-      system = "metric";
-      $(document).ready(function () {
-        $('#imperial_inputs').hide();
+    <script src="src/bmi_ui.js"></script>
 
-        $('#toggle_system input[type="radio"]').change(function () {
-          if ($('#toggle_system input[type="radio"]:checked').val() == "metric") {
-            $('#metric_inputs').show();
-            $('#imperial_inputs').hide();
-            $('#toggle_system input[type="number"], #weight_imperial').val("");
-            $('#toggle_system input[type="number"], #height_inches').val("");
-            $('#toggle_system input[type="number"], #height_feet').val("");
-            $('#display_value').html('');
-            $('#display_message').html('');
-            system = "metric";
-          } else {
-            $('#metric_inputs').hide();
-            $('#imperial_inputs').show();
-            $('#toggle_system input[type="number"], #weight').val("");
-            $('#toggle_system input[type="number"], #height').val("");
-            $('#display_value').html('');
-            $('#display_message').html('');
-            system = "imperial";
-          };
-        });
-        $('#calculate').click(function () {
-          if ($('#weight').val() == "" && $('#weight_imperial').val() == "" ) {
-            alert("Please enter a number in the weight field.")
-          };
-          if ($('#height').val() == "" && ($('#height_feet').val() == "" )) {
-            alert("Please enter a number in the height field(s).")
-          };
-          if ($('#height_inches').val() == "") {
-            var hi = 0
-          } else {
-            var hi = parseFloat($('#height_inches').val());
-          };
-          var w = parseFloat($('#weight').val());
-          var wi = parseFloat($('#weight_imperial').val());
-          var h = parseFloat($('#height').val());
-
-          var hf = parseFloat($('#height_feet').val());
-
-
-
-          var person = new Person({weight: w, weight_imperial: wi, height: h, height_feet: hf, height_inches: hi, system: system});
-          person.calculate_bmi();
-          $('#display_value').html('Your BMI is ' + person.bmiValue);
-          $('#display_message').html('and you are '+ person.bmiMessage);
-        });
-
-        $('#metric_form').keypress(function(e){
-        if(e.which == 13){//Enter key pressed
-            $('#calculate').click();//Trigger search button click event
-        }});
-
-        $('#imperial_form').keypress(function(e){
-        if(e.which == 13){
-            $('#calculate').click();
-          }
-        });
-      });
-    </script>
   </head>
   <body>
     <div id = 'box'>
